@@ -9,6 +9,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+print("GEMINI KEY FOUND:", bool(os.getenv("GEMINI_API_KEY")))
 model = genai.GenerativeModel("gemini-pro")
 
 QUESTIONS = [
@@ -111,3 +112,4 @@ def dashboard():
 
 if __name__ == "__main__":
     app.run()
+
