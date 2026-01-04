@@ -22,5 +22,4 @@ CREATE TABLE IF NOT EXISTS responses (
 
 conn.commit()
 conn.close()
-
-print("Database created successfully")
+print("Database initialized")
