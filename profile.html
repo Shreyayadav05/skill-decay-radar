@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div>User Profile</div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</div>
+
+<div class="container">
+    <a class="btn back-btn" href="/">← Back</a>
+
+    <h3>User: {{ user }}</h3>
+
+    <table border="1" width="100%" cellpadding="8">
+    <tr>
+        <th>Question</th>
+        <th>Your Answer</th>
+        <th>Correct</th>
+        <th>AI Used</th>
+        <th>Time (s)</th>
+    </tr>
+    {% for r in rows %}
+    <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ "Yes" if r[2]==1 else "No" }}</td>
+        <td>{{ "Yes" if r[3]==1 else "No" }}</td>
+        <td>{{ r[4]|round(2) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+</body>
+</html>

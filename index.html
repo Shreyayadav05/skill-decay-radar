@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skill Decay Radar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div>Skill Decay Radar</div>
+    <div>
+        <a href="/?mode=restricted">Restricted</a>
+        <a href="/?mode=assisted">Assisted</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/profile">Profile</a>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="question">{{ question.text }}</div>
+
+    {% if mode == "assisted" %}
+    <div class="help"><b>AI Hint:</b> {{ question.hint }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <input type="hidden" name="start_time" id="start_time">
+        <input type="hidden" name="correct_answer" value="{{ question.answer }}">
+        <input type="hidden" name="question" value="{{ question.text }}">
+
+        <label>Name</label>
+        <input type="text" name="user" required>
+
+        <label>Answer</label>
+        <input type="text" name="answer" required>
+
+        <label>Justification</label>
+        <textarea name="justification" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+<script>
+document.getElementById("start_time").value = Date.now() / 1000;
+</script>
+
+</body>
+</html>
